@@ -1,8 +1,37 @@
-<h3><%= Spree.t(:my_wishlists) %></h3>
-<ul>
-<% @user.wishlists.each do |wl| %>
-  <% if !wl.is_private? || @user == spree_current_user %>
-  <li><%= link_to wl.name, wl %></li>
-  <% end -%>
-<% end -%>
-</ul>
+<div data-hook="account_my_wishlists" class="account-page-orders" id="account-my-wishlists">
+  <h3 class="text-uppercase spree-mb-medium spree-mt-medium spree-header"><%= Spree.t(:my_wishlits) %></h3>
+  <% if @user.wishlists.present? %>
+    <table>
+      <thead class="active">
+        <tr>
+          <th class="text-uppercase text-secondary"><%= Spree::Wishlist.human_attribute_name(:name) %></th>
+          <th class="text-uppercase text-secondary"><%= Spree.t(:public_private) %></th>
+          <th class="text-uppercase text-secondary"><%= Spree.t(:number_of_items) %></th>
+          <th class="text-uppercase text-secondary actions"><%= Spree.t(:action) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.wishlists.each do |wishlist| %>
+          <tr>
+            <% if !wishlist.is_private? || @user == spree_current_user %>
+              <td><%= link_to wishlist.name, wishlist %></td>
+            <% end %>
+            <td><%= wishlist.is_private? ? Spree.t(:private) : Spree.t(:public) %></td>
+            <td><%= wishlist.wished_products.count %></td>
+            <td class="actions">
+              <%= link_to Spree.t(:view), wishlist, class: 'btn btn-success btn-sm' %>
+              <%= link_to Spree.t(:delete), wishlist, method: :delete, data: { confirm: Spree.t(:are_you_sure_wishlist) }, class: 'btn btn-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <div class="mt-4">
+    <% if @user == spree_current_user %>
+      <%= link_to Spree.t(:create_new_wishlist), new_wishlist_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <br>
+</div>
