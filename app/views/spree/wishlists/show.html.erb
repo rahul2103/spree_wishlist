@@ -49,8 +49,8 @@
 
     <div class="mt-4">
       <% if @wishlist.user == spree_current_user %>
-        <%= link_to Spree.t(:create_new_wishlist), new_wishlist_path, class: 'btn btn-primary' %>
-        <%= link_to Spree.t(:edit_wishlist), edit_wishlist_path(@wishlist), class: 'btn btn-secondary' %>
+        <%= link_to Spree.t(:create_new_wishlist), new_wishlist_path, class: 'btn btn-primary btn-sm' %>
+        <%= link_to Spree.t(:edit_wishlist), edit_wishlist_path(@wishlist), class: 'btn btn-secondary btn-sm' %>
       <% end %>
     </div>
     <br>

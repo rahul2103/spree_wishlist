@@ -1,6 +1,10 @@
-<h1><%= Spree.t(:creating_wishlist) %></h1>
-<%= form_for @wishlist do |f| %>
-  <p><%= f.label :name, Spree.t(:name) %>:&nbsp;<%= f.text_field :name %></p>
-  <p><%= f.check_box :is_private %>&nbsp;<%= f.label :is_private, Spree.t(:is_private) %></p>
-  <%= f.submit Spree.t(:create) %>
-<% end -%>
+<div class="container account-page">
+  <div data-hook="account_my_wishlists" class="account-page-orders" id="account-my-wishlists">
+    <h3 class="text-uppercase"><%= Spree.t(:creating_wishlist) %></h3>
+      <%= form_for @wishlist do |f| %>
+        <p><%= f.label :name, Spree.t(:name) %>:&nbsp;<%= f.text_field :name %></p>
+        <p><%= f.check_box :is_private %>&nbsp;<%= f.label :is_private, Spree.t(:is_private) %></p>
+        <%= f.submit Spree.t(:create), class: 'btn btn-sm btn-primary mb-3' %>
+      <% end -%>
+  </div>
+</div>
