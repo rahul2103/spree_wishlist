@@ -14,7 +14,8 @@ class Spree::WishedProductsController < Spree::BaseController
     end
 
     respond_with(@wished_product) do |format|
-      format.html { redirect_to wishlist_url(@wishlist) }
+      format.html { redirect_back(fallback_location: root_path) }
+      flash[:notice] = Spree.t(:added_to_default_wishlist)
     end
   end
 

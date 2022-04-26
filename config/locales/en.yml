@@ -2,6 +2,7 @@
 en:
   spree:
     add_to_wishlist: "Add to wishlist"
+    added_to_default_wishlist: Added to default wishlist
     are_you_sure_wishlist: "Are you sure that you want to delete this wishlist?"
     availability: "Availability"
     create_new_wishlist: "Create new wishlist"
